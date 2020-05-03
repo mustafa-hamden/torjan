@@ -7,6 +7,7 @@ import random
 import threading
 import os
 import queue
+from github3 import git
 
 from github3 import login
 
@@ -52,12 +53,14 @@ def connect_to_github():
     gh = login(username="asssassing6@gmail.com", password="mustafa0909250601")
     repo = gh.repository("mustafa-hamden", "torjan")
     branch = repo.branch("master")
+    # branch = repo.branch("master")
     return gh, repo, branch
 
 
 def get_file_contents(filepath):
     gh, rep, branch = connect_to_github()
-    tree = branch.commit.tree.recures()
+    tree = branch.Tree.recurse()
+    # tree = branch.commit.commit.tree.recures()
 
     for filename in tree.tree:
 
